@@ -40,8 +40,8 @@ load_dotenv()
 
 # UI configuration (optional)
 UI_TITLE = os.environ.get("UI_TITLE") or "Padana"
-UI_LOGO = os.environ.get("UI_LOGO")
-UI_CHAT_LOGO = os.environ.get("UI_CHAT_LOGO")
+UI_LOGO = os.environ.get("UI_LOGO") or "/assets/Contoso.svg"
+UI_CHAT_LOGO = os.environ.get("UI_CHAT_LOGO") or "/assets/Contoso.svg"
 UI_CHAT_TITLE = os.environ.get("UI_CHAT_TITLE") or "ChatPharma"
 UI_CHAT_DESCRIPTION = (
     os.environ.get("UI_CHAT_DESCRIPTION")
