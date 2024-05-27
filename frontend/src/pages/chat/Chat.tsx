@@ -770,7 +770,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: 'Generating answer...',
+                          answer: 'Thinking...',
                           citations: []
                         }}
                         onCitationClicked={() => null}
@@ -881,6 +881,14 @@ const Chat = () => {
           {/* Citation Panel */}
           {messages && messages.length > 0 && isCitationPanelOpen && activeCitation && (
             <Stack.Item className={styles.citationPanel} tabIndex={0} role="tabpanel" aria-label="Citations Panel">
+              {/* New button for FDA guidance */}
+              <div className={styles.fdaButtonContainer}>
+                <button className={styles.fdaButton} onClick={() => 
+                  window.open("https://www.fda.gov/regulatory-information/search-fda-guidance-documents", 
+                  '_blank')}>
+                  FDA Guidance Documents
+                </button>
+              </div>
               <Stack
                 aria-label="Citations Panel Header Container"
                 horizontal

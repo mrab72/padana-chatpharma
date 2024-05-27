@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Sample App Backend",
+      "name": "Python: Padana Backend",
       "type": "python",
       "request": "launch",
       "module": "quart",
