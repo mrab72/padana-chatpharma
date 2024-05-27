@@ -49,6 +49,7 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [showLoadingMessage, setShowLoadingMessage] = useState<boolean>(false)
   const [activeCitation, setActiveCitation] = useState<Citation>()
+  const BaseURL = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process`
   const [isCitationPanelOpen, setIsCitationPanelOpen] = useState<boolean>(false)
   const abortFuncs = useRef([] as AbortController[])
   const [showAuthMessage, setShowAuthMessage] = useState<boolean | undefined>()
@@ -770,7 +771,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: 'Generating answer...',
+                          answer: 'Thinking...',
                           citations: []
                         }}
                         onCitationClicked={() => null}
@@ -881,6 +882,16 @@ const Chat = () => {
           {/* Citation Panel */}
           {messages && messages.length > 0 && isCitationPanelOpen && activeCitation && (
             <Stack.Item className={styles.citationPanel} tabIndex={0} role="tabpanel" aria-label="Citations Panel">
+              {/* New button for FDA guidance */}
+              <div className={styles.fdaButtonContainer}>
+                <button className={styles.fdaButton} onClick={() =>
+                  window.open(
+                    `${BaseURL}=${activeCitation.url?.split("-")[0]}`,
+                    '_blank'
+                )}>
+                  FDA Guidance Documents
+                </button>
+              </div>
               <Stack
                 aria-label="Citations Panel Header Container"
                 horizontal

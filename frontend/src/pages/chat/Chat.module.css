@@ -358,3 +358,25 @@ a {
     max-width: 100%;
   }
 }
+
+
+/* Add this at the end or in an appropriate section */
+.fdaButtonContainer {
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.fdaButton {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fdaButton:hover {
+  background-color: #005a9e;
+}

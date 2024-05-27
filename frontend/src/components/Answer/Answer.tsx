@@ -291,7 +291,8 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
           </Stack>
         </Stack.Item>
         <Stack horizontal className={styles.answerFooter}>
-          {!!parsedAnswer.citations.length && (
+          {
+            !!parsedAnswer.citations.length && (
             <Stack.Item onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? toggleIsRefAccordionOpen() : null)}>
               <Stack style={{ width: '100%' }}>
                 <Stack horizontal horizontalAlign="start" verticalAlign="center">
@@ -302,9 +303,12 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
                     tabIndex={0}
                     role="button">
                     <span>
-                      {parsedAnswer.citations.length > 1
+                       
+                      {
+                        parsedAnswer.citations.length > 1
                         ? parsedAnswer.citations.length + ' references'
-                        : '1 reference'}
+                        : '1 reference'
+                      }
                     </span>
                   </Text>
                   <FontIcon
@@ -316,9 +320,6 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
               </Stack>
             </Stack.Item>
           )}
-          <Stack.Item className={styles.answerDisclaimerContainer}>
-            <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
-          </Stack.Item>
         </Stack>
         {chevronIsExpanded && (
           <div className={styles.citationWrapper}>
