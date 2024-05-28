@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useContext, useLayoutEffect } from 'react'
 import { CommandBarButton, IconButton, Dialog, DialogType, Stack } from '@fluentui/react'
+import { PrimaryButton } from '@fluentui/react/lib/Button'
 import { SquareRegular, ShieldLockRegular, ErrorCircleRegular } from '@fluentui/react-icons'
 
 import ReactMarkdown from 'react-markdown'
@@ -882,15 +883,34 @@ const Chat = () => {
           {/* Citation Panel */}
           {messages && messages.length > 0 && isCitationPanelOpen && activeCitation && (
             <Stack.Item className={styles.citationPanel} tabIndex={0} role="tabpanel" aria-label="Citations Panel">
-              {/* New button for FDA guidance */}
-              <div className={styles.fdaButtonContainer}>
-                <button className={styles.fdaButton} onClick={() =>
-                  window.open(
-                    `${BaseURL}${activeCitation.filepath?.split("-")[0]}`,
-                    '_blank'
-                )}>
+              <div className={styles.activeCitationButtonContainer}>
+                <PrimaryButton
+                  className={styles.activeCitationButton}
+                  onClick={() =>
+                    window.open(
+                      `${BaseURL}${activeCitation.filepath?.split("-")[0]}`,
+                      '_blank'
+                    )
+                  }
+                  styles={{
+                    icon: {
+                      color: '#FFFFFF'
+                    },
+                    iconDisabled: {
+                      color: '#BDBDBD !important'
+                    },
+                    root: {
+                      color: '#FFFFFF',
+                      background:
+                        'radial-gradient(109.81% 107.82% at 100.1% 90.19%, #0F6CBD 33.63%, #2D87C3 70.31%, #8DDDD8 100%)'
+                    },
+                    rootDisabled: {
+                      background: '#F0F0F0'
+                    }
+                  }}
+                >
                   Show Application {activeCitation.filepath?.split("-")[0]} on FDA
-                </button>
+                </PrimaryButton>
               </div>
               <Stack
                 aria-label="Citations Panel Header Container"
