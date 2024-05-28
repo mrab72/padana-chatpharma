@@ -49,7 +49,7 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [showLoadingMessage, setShowLoadingMessage] = useState<boolean>(false)
   const [activeCitation, setActiveCitation] = useState<Citation>()
-  const BaseURL = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process`
+  const BaseURL = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=`
   const [isCitationPanelOpen, setIsCitationPanelOpen] = useState<boolean>(false)
   const abortFuncs = useRef([] as AbortController[])
   const [showAuthMessage, setShowAuthMessage] = useState<boolean | undefined>()
@@ -886,10 +886,10 @@ const Chat = () => {
               <div className={styles.fdaButtonContainer}>
                 <button className={styles.fdaButton} onClick={() =>
                   window.open(
-                    `${BaseURL}=${activeCitation.url?.split("-")[0]}`,
+                    `${BaseURL}${activeCitation.filepath?.split("-")[0]}`,
                     '_blank'
                 )}>
-                  FDA Guidance Documents
+                  Show Application {activeCitation.filepath?.split("-")[0]} on FDA
                 </button>
               </div>
               <Stack
